@@ -8,14 +8,19 @@
 		<form action="" method="post">
 	  		<input type="text" name="Login" placeholder="Login"/>
 	  		<input type="password" name="mdp" placeholder="Mot de passe"/>
+	  		<input type="password" name="cmdp" placeholder="Confirmation du mot de passe"/>
 	  		<input type="submit" name="Valider" value="S'inscrire"/>
-	  	</from>
+	  	</form>
 	  	<?php
 	  		include("config.php");
 
       		/*Si l'utilisateur clique sur Valider*/
       		if(isset($_POST['Valider']))
       		{
+      			if($_POST['mdp'] != $_POST['cmdp'])
+	  			{
+	  				die("Mot de passe différents"); 
+	  			}
 				/*Connection a la base de donnée*/
 				if(!($cid=mysql_connect("localhost", $user,$password)))
 				{
