@@ -40,7 +40,7 @@
   					$requete = "INSERT INTO  `projet_blog`.`utilisateur`(`Login`, `Mdp`, `Droit`) 
   								VALUES ('".$_POST['Login']."',  '".$mdps."',  'Lambda');"; 
 
-  					mysql_select_db("test");
+  					mysql_select_db("projet_blog");
   					$res=mysql_query($requete, $cid);
   					//Fin du SQL  
   					//Si l'insertion a échoué => Message d'erreur

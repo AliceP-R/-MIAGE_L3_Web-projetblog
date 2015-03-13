@@ -70,34 +70,28 @@
 				if($connex==TRUE)
 				{
 	  				//...on enregistre le pseudo dans une variable de session et on envoi l'utilisateur sur sa page perso.
+	  				session_start(); 
 	  				$_SESSION['pseudo']=$_POST['login'];
-	  				$_SESSION['test_connect']=1;
-	  				echo "Connexion ok"; 
+	  				header("Location: ./page_perso.php"); 
 				}
 	
 				//...sinon on affiche un message d'erreur.
 				else
 				{
-	  				echo "</br><div class=\"alert alert-error span4\" >";
 	  				echo "Identifiants incorrects.";
-	  				echo "</div><br/></br>";
 				}
       		}
       
       		//Si l'utilisateur n'a pas entré de login => Message d'erreur
       		else if(strcmp($_POST['login'], "") == 0)
       		{
-	  			echo "</br><div class=\"alert alert-error span4\" >";
 	  			echo "Entrez votre login.";
-	  			echo "</div><br/></br>";
 			}
 
-		    //Si l'utilisateur n'a pas entré de login => Message d'erreur
+		    //Si l'utilisateur n'a pas entré de mdp => Message d'erreur
       		else if(strcmp($_POST['mdp'], "") ==0)
       		{
-	  			echo "</br><div class=\"alert alert-error span4\" >";
 	  			echo "Entrez votre mot de passe.";
-	  			echo "</div><br/></br>";
 			}
     	}
 	?>
