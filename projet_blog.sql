@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: 127.0.0.1
--- Généré le : Ven 13 Mars 2015 à 09:49
+-- Généré le : Ven 13 Mars 2015 à 10:45
 -- Version du serveur: 5.5.20
 -- Version de PHP: 5.3.9
 
@@ -57,12 +57,18 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
 --
 
 CREATE TABLE IF NOT EXISTS `utilisateur` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Login` varchar(50) NOT NULL,
   `Mdp` varchar(50) NOT NULL,
   `Droit` enum('Admin','Lambda') NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  PRIMARY KEY (`Login`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`Login`, `Mdp`, `Droit`) VALUES
+('aaa', '7e240de74fb1ed08fa08d38063f6a6a91462a815', 'Lambda');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
