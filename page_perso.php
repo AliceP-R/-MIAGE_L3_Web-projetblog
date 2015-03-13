@@ -1,6 +1,8 @@
 <?php 
 	session_start(); 
 	var_dump($_SESSION); 
+  if(!isset($_SESSION['pseudo']))
+    header("Location: ./connexion.php"); 
 
 ?>
 <!DOCTYPE html>
@@ -93,7 +95,7 @@
       		elseif(isset($_POST['deconnexion']))
       		{
       			session_destroy(); 
-      			header("Location: ./connexion.php"); 
+      			header("Location: ./accueil.php"); 
       		}
 		?>
 	</BODY>
