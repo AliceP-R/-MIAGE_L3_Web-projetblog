@@ -1,9 +1,12 @@
-<?php session_start(); ?>
+<?php 
+	session_start(); 
+	var_dump($_SESSION); 
+?>
 <!DOCTYPE html>
 <HTML>
 	<HEAD>
 		<meta charset="utf-8" />
-		<TITLE> Inscription </TITLE>
+		<TITLE> Connexion </TITLE>
 	</HEAD>
 	<BODY>
 	<form method="POST" action="">
@@ -66,11 +69,13 @@
 				//...on les envois à la fonction connexion qui renvoi une valeur stockée dans $connex...
 				$connex=connexion($cid, $_POST['login'], $_POST['mdp']);
 	
-				//...si les identifiants sont corects...
+				//...si les identifiants sont corrects...
 				if($connex==TRUE)
 				{
 	  				//...on enregistre le pseudo dans une variable de session et on envoi l'utilisateur sur sa page perso.
 	  				$_SESSION['pseudo']=$_POST['login'];
+	  				$_SESSION["juste_inscrit"]=0;
+	  				$_SESSION["billet_soumis"]=0;
 	  				header("Location: ./page_perso.php"); 
 				}
 	

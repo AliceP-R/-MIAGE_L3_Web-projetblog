@@ -1,3 +1,7 @@
+<?php 
+	session_start(); 
+	var_dump($_SESSION); 
+?>
 <!DOCTYPE html>
 <HTML>
 	<HEAD>
@@ -50,7 +54,12 @@
   					}
   					//Si l'insertion est réussi => Message de succès
   					else 
-    					echo "Inscription ok<br/>"; 
+  					{
+  						$_SESSION["juste_inscrit"]=1; 
+  						$_SESSION["pseudo"]=$_POST['Login']; 
+  						$_SESSION['billet_soumis']=0;
+  						header("Location: ./page_perso.php"); 
+  					}
     			}
 			}
 	  	?>

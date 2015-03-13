@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php 
+  session_start(); 
+  var_dump($_SESSION); 
+
+?>
 <!DOCTYPE html>
 <HTML>
 	<HEAD>
@@ -7,7 +11,16 @@
 	</HEAD>
 
 	<BODY>
+    <form method="POST" action="">
+      <input type="submit" name="retour" value="Retour à ma page"> 
+    </form>
+    
 		<?php
+
+      if(isset($_POST['retour']))
+        header("Location: ./page_perso.php"); 
+
+
 			include("config.php"); 
 			// Récupération des articles de la personne connectée 
 			/*Connection a la base de données*/
