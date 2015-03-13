@@ -43,17 +43,15 @@
     			}
 
     			/*Connection a la base de données*/
-      			if(!($cid=mysql_connect("localhost", $user,$password)))
+      			if(!($cid=mysqli_connect("localhost", $user,$password, "projet_blog")))
       			{
 					die("Erreur de connexion à la base de données.<br/>");
       			}
 
-				mysql_select_db("projet_blog");
-      			
       			//Debut du SQL
       			$requete = "INSERT INTO `billet`(`Titre`, `Resumer`, `Contenu`, `Redacteur`) 
       						VALUES ('".$_POST['titre']."', '".$_POST['resumer']."', '".$_POST['contenu']."', '".$_SESSION['pseudo']."');";  
-  				$res=mysql_query($requete, $cid);
+  				$res=mysqli_query($cid, $requete);
   				//Fin du SQL  
   				//Si l'insertion a échoué => Message d'erreur
   				if($res == FALSE) 

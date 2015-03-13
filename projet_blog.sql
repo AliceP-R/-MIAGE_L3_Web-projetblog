@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: 127.0.0.1
--- Généré le : Ven 13 Mars 2015 à 15:16
+-- Généré le : Ven 13 Mars 2015 à 18:29
 -- Version du serveur: 5.5.20
 -- Version de PHP: 5.3.9
 
@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `billet` (
   `Titre` varchar(50) NOT NULL,
+  `Resumer` varchar(100) NOT NULL,
   `Contenu` longtext NOT NULL,
   `Redacteur` varchar(50) NOT NULL,
   `Etat` enum('Publie','En attente') NOT NULL DEFAULT 'En attente',
@@ -40,17 +41,10 @@ CREATE TABLE IF NOT EXISTS `billet` (
 -- Contenu de la table `billet`
 --
 
-INSERT INTO `billet` (`Titre`, `Contenu`, `Redacteur`, `Etat`) VALUES
-('aaa', 'aaa ', 'aaa', 'En attente'),
-('Bonjour', 'Contenu', 'aaa', 'En attente'),
-('Bouya', 'Bouya', 'aaa', 'En attente'),
-('cerise', 'pomme', 'aaa', 'En attente'),
-('HEllo', 'flkdsjflsdjf', 'aaa', 'En attente'),
-('panda', 'roux', 'aaa', 'En attente'),
-('parler', 'Ã©crire', 'aaa', 'En attente'),
-('pomme', 'poire', 'aaa', 'En attente'),
-('Titre', 'Contenu', 'aaa', 'En attente'),
-('Yata', 'Yataaaaa', 'aaa', 'En attente');
+INSERT INTO `billet` (`Titre`, `Resumer`, `Contenu`, `Redacteur`, `Etat`) VALUES
+('Alice', 'Resume', 'Contenu', 'aaa', 'En attente'),
+('dfdsf', 'sdfsdfsdfs', 'fsdfsdfsdfs', 'aaa', 'En attente'),
+('titre', 'reumser', 'contenu', 'aaa', 'En attente');
 
 -- --------------------------------------------------------
 
@@ -89,6 +83,7 @@ INSERT INTO `utilisateur` (`Login`, `Mdp`, `Droit`) VALUES
 ('aaaaaa', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'Lambda'),
 ('ccc', 'f36b4825e5db2cf7dd2d2593b3f5c24c0311d8b2', 'Lambda'),
 ('eee', '637a81ed8e8217bb01c15c67c39b43b0ab4e20f1', 'Lambda'),
+('jjj', 'c84c766f873ecedf75aa6cf35f1e305e095fec83', 'Lambda'),
 ('nnn', '7f88bb68e14d386d89af3cf317f6f7af1d39246c', 'Lambda'),
 ('qqq', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'Lambda'),
 ('ss', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'Lambda');

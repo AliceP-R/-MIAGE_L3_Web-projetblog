@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <HTML>
 	<HEAD>
@@ -28,8 +29,7 @@
   
   			//Début du SQL
   			$requete = "SELECT `Mdp` FROM `utilisateur` WHERE `login`=\"".$_POST['login']."\";";
-  			mysql_select_db("projet_blog");
-  			$res=mysql_query($requete, $cid);
+  			$res=mysqli_query($cid, $requete);
   			//Fin du SQL
   
   			//Si la requete echoue
@@ -40,7 +40,7 @@
   			else
   			{
     			//..on le stock dans $arr...
-    			$arr=mysql_fetch_assoc($res);
+    			$arr=mysqli_fetch_assoc($res);
     
 			    //...et on le compare avec le mdp envoyé par l'utilisateur.
     			if($arr['Mdp']==$mdps)
@@ -55,7 +55,7 @@
     	if(isset($_POST['Valider']))
     	{
       		/*Connection a la base de données*/
-      		if(!($cid=mysql_connect("localhost", $user,$password)))
+      		if(!($cid=mysqli_connect("localhost", $user,$password, "projet_blog")))
       		{
 				die("Erreur de connexion à la base de données.<br/>");
       		}
@@ -70,7 +70,6 @@
 				if($connex==TRUE)
 				{
 	  				//...on enregistre le pseudo dans une variable de session et on envoi l'utilisateur sur sa page perso.
-	  				session_start(); 
 	  				$_SESSION['pseudo']=$_POST['login'];
 	  				header("Location: ./page_perso.php"); 
 				}

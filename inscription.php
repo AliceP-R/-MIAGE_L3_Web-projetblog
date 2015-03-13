@@ -29,7 +29,7 @@
 	  				}
 
 					/*Connection a la base de donnée*/
-					if(!($cid=mysql_connect("localhost", $user,$password)))
+					if(!($cid=mysqli_connect("localhost", $user,$password, "projet_blog")))
 					{
 	  					die("Erreur à la connexion de la base de données");
 					}
@@ -40,8 +40,7 @@
   					$requete = "INSERT INTO  `projet_blog`.`utilisateur`(`Login`, `Mdp`, `Droit`) 
   								VALUES ('".$_POST['Login']."',  '".$mdps."',  'Lambda');"; 
 
-  					mysql_select_db("projet_blog");
-  					$res=mysql_query($requete, $cid);
+  					$res=mysqli_query($cid, $requete);
   					//Fin du SQL  
   					//Si l'insertion a échoué => Message d'erreur
   					if($res == FALSE) 
