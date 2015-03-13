@@ -27,9 +27,9 @@
   			$mdps=sha1($mdp);
   
   			//Début du SQL
-  			$query = "SELECT `Mdp` FROM `utilisateur` WHERE `login`=\"".$_POST['login']."\";";
+  			$requete = "SELECT `Mdp` FROM `utilisateur` WHERE `login`=\"".$_POST['login']."\";";
   			mysql_select_db("projet_blog");
-  			$res=mysql_query($query, $cid);
+  			$res=mysql_query($requete, $cid);
   			//Fin du SQL
   
   			//Si la requete echoue
