@@ -10,7 +10,7 @@
 		<TITLE> Page de <?php echo $_SESSION['pseudo'];?> </TITLE>
 	</HEAD>
 	<BODY>
-		Bonjour <?php echo $_SESSION['pseudo']; ?> !
+		Bonjour éà <?php echo $_SESSION['pseudo']; ?> !
 		<?php 
 			if($_SESSION["juste_inscrit"]==1)
 			{
@@ -20,9 +20,9 @@
 		?>
 		Que voulez vous faire aujourd'hui ? 
 		<form method="POST" action="">
-			<input type="submit" name="bouton_creer" value="Créer un article" />
-			<input type="submit" name="bouton_modifier" value="Modifier un article" />
-			<input type="submit" name="bouton_voir" value="Voir mes articles" />
+			<input type="submit" name="bouton_creer" value="Créer un billet" />
+			<input type="submit" name="bouton_modifier" value="Modifier un billet" />
+			<input type="submit" name="bouton_voir" value="Voir mes billets" />
 			<input type="submit" name="acces_blog" value="Accéder au blog" />
 			<?php
 			include("config.php"); 
@@ -47,6 +47,7 @@
     				$arr=mysqli_fetch_assoc($res);
     				if($arr['Droit']=="Admin")
     				{
+    					echo '<input type="submit" name="tout_afficher" value="Afficher tous les billets" />'; 
       					echo '<input type="submit" name="moderer_billet" value="Modérer les billets" />'; 
       					echo '<input type="submit" name="moderer_commentaire" value="Modérer les commentaires" />'; 
       				}
@@ -71,15 +72,19 @@
 
     		if(isset($_POST['bouton_creer']))
     		{
-      			header("Location: ./creation_article.php"); 
+      			header("Location: ./creation_billet.php"); 
       		}
       		elseif(isset($_POST['bouton_modifier']))
       		{
-      			header("Location: ./modification_article.php"); 
+      			header("Location: ./modification_billet.php"); 
       		}
       		elseif(isset($_POST['bouton_voir']))
       		{
-      			header("Location: ./afficher_article.php"); 
+      			header("Location: ./afficher_billet.php"); 
+      		}
+      		elseif(isset($_POST['tout_afficher']))
+      		{
+      			header("Location: ./afficher_tous_billets.php"); 
       		}
 			elseif(isset($_POST['acces_blog']))
       		{

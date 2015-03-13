@@ -59,7 +59,7 @@
   				if($res == FALSE) 
   				{
   					$_SESSION['actualisation']=1; 
-  					header("Location: ./creation_article.php"); 
+  					header("Location: ./creation_billet.php"); 
 
   				}
   				//Si l'insertion est réussi => Message de succès

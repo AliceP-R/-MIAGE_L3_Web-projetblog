@@ -31,7 +31,7 @@
   			$mdps=sha1($mdp);
   
   			//Début du SQL
-  			$requete = "SELECT `Mdp` FROM `utilisateur` WHERE `login`=\"".$_POST['login']."\";";
+  			$requete = "SELECT `Mdp`, `Droit` FROM `utilisateur` WHERE `login`=\"".$_POST['login']."\";";
   			$res=mysqli_query($cid, $requete);
   			//Fin du SQL
   
@@ -42,13 +42,15 @@
   			//Si la requete renvoie un résultat...   
   			else
   			{
-    			//..on le stock dans $arr...
-    			$arr=mysqli_fetch_assoc($res);
+    			//..on le stock dans $ligne...
+    			$ligne=mysqli_fetch_assoc($res);
     
 			    //...et on le compare avec le mdp envoyé par l'utilisateur.
-    			if($arr['Mdp']==$mdps)
-      				return TRUE;
-      
+    			if($ligne['Mdp']==$mdps)
+    			{
+    				$_SESSION['Droit']=$ligne['Droit']; 
+    				return TRUE;
+    			}
 			    else
       				return FALSE;
   			}
@@ -76,6 +78,7 @@
 	  				$_SESSION['pseudo']=$_POST['login'];
 	  				$_SESSION["juste_inscrit"]=0;
 	  				$_SESSION["billet_soumis"]=0;
+	  				$_SESSION["modif_ok"]=0; 
 	  				header("Location: ./page_perso.php"); 
 				}
 	
