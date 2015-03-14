@@ -58,6 +58,7 @@
   						$_SESSION["juste_inscrit"]=1; 
   						$_SESSION["pseudo"]=$_POST['Login']; 
   						$_SESSION['billet_soumis']=0;
+  						$_SESSION['modif_ok']=0; 
   						header("Location: ./page_perso.php"); 
   					}
     			}
