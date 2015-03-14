@@ -12,7 +12,7 @@
 		<TITLE> Page de <?php echo $_SESSION['pseudo'];?> </TITLE>
 	</HEAD>
 	<BODY>
-		Bonjour éà <?php echo $_SESSION['pseudo']; ?> !
+		Bonjour <?php echo $_SESSION['pseudo']; ?> !
 		<?php 
 			if($_SESSION["juste_inscrit"]==1)
 			{
@@ -49,7 +49,7 @@
     				$arr=mysqli_fetch_assoc($res);
     				if($arr['Droit']=="Admin")
     				{
-    					echo '<input type="submit" name="tout_afficher" value="Afficher tous les billets" />'; 
+    					  echo '<input type="submit" name="tout_afficher" value="Afficher tous les billets" />'; 
       					echo '<input type="submit" name="moderer_billet" value="Modérer les billets" />'; 
       					echo '<input type="submit" name="moderer_commentaire" value="Modérer les commentaires" />'; 
       				}
@@ -88,7 +88,15 @@
       		{
       			header("Location: ./afficher_tous_billets.php"); 
       		}
-			elseif(isset($_POST['acces_blog']))
+          elseif(isset($_POST['moderer_billet']))
+          {
+            header("Location: ./moderer_billet.php"); 
+          }
+          elseif(isset($_POST['moderer_commentaire']))
+          {
+            header("Location: ./moderer_commentaire.php"); 
+          }
+			    elseif(isset($_POST['acces_blog']))
       		{
       			echo "accès blog"; 
       		}

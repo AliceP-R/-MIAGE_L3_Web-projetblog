@@ -28,7 +28,7 @@
 			/*Connection a la base de données*/
       $cid = mysqli_connect("localhost", $user, $password, "projet_blog") or die("Erreur : ".mysqli_error($cid)); 
 			//Début du SQL
-  		$requete = "SELECT `Titre`, `Resumer`, `Redacteur` FROM `billet` WHERE `Etat`=\"Publie\";";
+  		$requete = "SELECT `Titre`, `Resumer`, `Redacteur`, `Etat` FROM `billet;";
   		$res=mysqli_query($cid, $requete);
   		//Fin du SQL
   
@@ -40,14 +40,13 @@
   		{
   			$nbre_res=mysqli_num_rows($res); 
   			if($nbre_res==0)
-  				die("Il n'y a aucun billet publié.<br/>"); 
+  				die("Il n'y a aucun billet.<br/>"); 
     		
     		echo "<TABLE BORDER>"; 
-    		echo "<CAPTION>Liste des billets publiés</CAPTION>"; 
-    		echo "<TR ALIGN=CENTER><TH>Titre</TH><TH>Résumé</TH></TR>"; 
+    		echo "<CAPTION>Liste des billets</CAPTION>"; 
+    		echo "<TR ALIGN=CENTER><TH>Titre</TH><TH>Résumé</TH><TH>Etat</TH></TR>"; 
     		while ($ligne = mysqli_fetch_assoc($res)) 
     		{
-          echo $ligne['Redacteur']; 
     			echo "<TR ALIGN=CENTER>"; 
    				echo "<TD VALIGN=MIDDLE "; 
           if($ligne['Redacteur']==$_SESSION['pseudo'])
@@ -57,7 +56,12 @@
           if($ligne['Redacteur']==$_SESSION['pseudo'])
             echo "BGCOLOR=\"#FF6633\""; 
           echo ">".$ligne["Resumer"]."</TD>";
+          echo "<TD VALIGN=MIDDLE "; 
+          if($ligne['Redacteur']==$_SESSION['pseudo'])
+            echo "BGCOLOR=\"#FF6633\""; 
+          echo ">".$ligne["Etat"]."</TD>";
    				echo "</TR>"; 
+
 			  }  
 
 			  echo "</TABLE>"; 
