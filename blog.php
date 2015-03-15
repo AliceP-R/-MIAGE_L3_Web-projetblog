@@ -16,11 +16,9 @@
 				{
 					echo "<input type=\"submit\" name=\"bouton_connexion\" value=\"Se connecter\"/>"; 	
 					echo "<input type=\"submit\" name=\"bouton_inscription\" value=\"S'incrire\" />"; 
-				}
-				else
-					echo "<input type=\"submit\" name=\"deco\" value=\"Se déconnecter\" />"; 
+				} 
 			?>
-			<input type="submit" name="acces_blog" value="Accéder au blog" />
+			<input type="submit" name="deco" value="Se déconnecter" />
 		</form>
 
 		<?php
@@ -32,15 +30,13 @@
       	{
       		header("Location: ./inscription.php"); 
       	}
-      	elseif(isset($_POST['acces_blog']))
-      	{
-      		header("Location: ./blog.php"); 
-      	}
       	elseif(isset($_POST['deco']))
       	{
       		session_destroy(); 
       		header("Location: ./accueil.php"); 
       	}
       	?>
+
+      	Afficher le blog ??? 
 	</BODY>
 </HEAD>
