@@ -52,8 +52,13 @@
       			}
 
       			//Debut du SQL
-      			$requete = "INSERT INTO `billet`(`Titre`, `Resumer`, `Contenu`, `Redacteur`) 
-      						VALUES ('".$_POST['titre']."', '".$_POST['resumer']."', '".$_POST['contenu']."', '".$_SESSION['pseudo']."');";  
+            if($_SESSION['Droit']=="Admin")
+              $etat="Publie"; 
+            else
+              $etat="En attente"; 
+
+      			$requete = "INSERT INTO `billet`(`Titre`, `Resumer`, `Contenu`, `Redacteur`, `Etat`) 
+      						VALUES ('".$_POST['titre']."', '".$_POST['resumer']."', '".$_POST['contenu']."', '".$_SESSION['pseudo']."', '".$etat."');";  
   				$res=mysqli_query($cid, $requete);
   				//Fin du SQL  
   				//Si l'insertion a échoué => Message d'erreur

@@ -1,5 +1,6 @@
 <?php 
 	session_start(); 
+  var_dump($_SESSION); 
   if(!isset($_SESSION['pseudo']))
     header("Location: ./connexion.php"); 
 
@@ -58,7 +59,7 @@
 			<input type="submit" name="deconnexion" value="Se déconnecter" />
 		</form>
 		<?php 
-			if($_SESSION['billet_soumis']==1)
+			if($_SESSION['billet_soumis']==1 && $_SESSION['Droit']=="Lambda")
 			{
 				echo "Votre billet \"".$_SESSION['titre']."\" a bien été soumis à modération, il sera publié dans les plus brefs délais.<br/>"; 
 			}
