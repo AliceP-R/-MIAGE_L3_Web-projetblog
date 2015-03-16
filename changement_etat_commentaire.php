@@ -8,19 +8,18 @@
 <HTML>
 	<HEAD>
 		<meta charset="utf-8" />
-		<TITLE> Modération du billet <?php echo $_GET['titre']; ?> </TITLE>
+		<TITLE> Modération de commentaire</TITLE>
 	</HEAD>
 	<BODY>
 		<?php
-
-			$_SESSION['titre']=$_GET['titre']; 
 			// Récupération des données relatives au billet 
 			include("config.php"); 
+			$_SESSION['titre']=$_GET['titre']; 
 			// Récupération des billets de la personne connectée 
 			/*Connection a la base de données*/
       		$cid = mysqli_connect("localhost", $user, $password, "projet_blog") or die("Erreur : ".mysqli_error($cid)); 
 			//Début du SQL
-  			$requete = "SELECT `Resumer`, `Contenu` FROM `billet` WHERE `Titre`=\"".$_GET['titre']."\" AND `Redacteur`=\"".$_GET['redacteur']."\";";
+  			$requete = "SELECT `Contenu`, `Emetteur` FROM `commentaire` WHERE ID=".$_GET['id'].";";
   			$res=mysqli_query($cid, $requete);
   			//Fin du SQL
 
@@ -30,15 +29,11 @@
   			//Si la requete renvoie un résultat...   
   			else
   			{
-  				$nbre_res=mysqli_num_rows($res); 
-  				if($nbre_res==0)
-  					die("Vous n'avez écrit aucun billet.<br/>"); 
-				
-				$ligne = mysqli_fetch_assoc($res); 
+  				$ligne = mysqli_fetch_assoc($res); 
 				echo "<form method=\"post\" action=\"\">"; 
-				echo "<legend> Billet ".$_GET['titre']." écrit par ".$_GET['redacteur']." </legend>"; 
-   				echo "<label>Résumer</label>";
-   				echo "<br/><textarea rows='10' cols='50' disabled='disabled'>".$ligne['Resumer']."</textarea>"; 
+				echo "<legend> Commentaire sur le billet ".$_SESSION['titre']."</legend>"; 
+   				echo "<label>Emetteur</label>";
+   				echo "<br/><textarea rows='1' cols='50' disabled='disabled'>".$ligne['Emetteur']."</textarea>"; 
    				echo "<br/><label>Contenu</label>";
    				echo "<br/><textarea rows='30' cols='50' disabled='disabled'>".$ligne['Contenu']."</textarea><br/>";
    				echo "<input type=\"submit\" name=\"Envoyer\" value=\"Publié\"/>"; 
@@ -49,23 +44,23 @@
 
 			if(isset($_POST['retour']))
 			{
-				header("Location: ./page_perso.php"); 
+				header("Location: ./moderer_commentaire.php"); 
 			}
 			
 			elseif(isset($_POST['Envoyer']))
 			{
-				$requete="UPDATE `billet` SET `Etat` = 'Publie' WHERE `Titre` = '".$_GET['titre']."' AND `Redacteur` ='".$_GET['redacteur']."';"; 
+				$requete = "UPDATE `commentaire` SET `Etat` = 'Publie' WHERE `commentaire`.`ID` = ".$_GET['id'].";"; 
 				$res=mysqli_query($cid, $requete); 
 
 				if($res == FALSE)
 				{ 
-					$_SESSION['publication_ok']=0; 
+					$_SESSION['commentaire_ok']=0; 
 					echo "Erreur dans la publication."; 
 				}
 				else
 				{
-					$_SESSION['publication_ok']=1; 
-					header("Location: ./moderer_billet.php"); 
+					$_SESSION['commentaire_ok']=1; 
+					header("Location: ./moderer_commentaire.php"); 
 				}
 			}
 		?>

@@ -1,6 +1,5 @@
 <?php 
 	session_start(); 
-	var_dump($_SESSION); 
   if(!isset($_SESSION['pseudo']))
     header("Location: ./connexion.php"); 
 
@@ -12,11 +11,19 @@
 		<TITLE> Modération des billets </TITLE>
 	</HEAD>
 	<BODY>
+		<form method="POST" action="">
+				<input type="submit" name="retour" value="Retour">
+		</form>
 		<?php
+
+			if(isset($_POST['retour']))
+			{
+				header("Location: ./page_perso.php"); 
+			}
 
 			if($_SESSION['publication_ok']==1)
 			{
-				echo "Le billet ".$_SESSION['titre']." a bien été publié."; 
+				echo "Le billet ".$_SESSION['titre']." a bien été publié.<br/>"; 
 				$_SESSION['titre']=null; 
 				$_SESSION['publication_ok']=0; 
 			}
@@ -55,16 +62,6 @@
 
 				echo "</TABLE>"; 
     			
-			}
-			?>
-
-			<form method="POST" action="">
-				<input type="submit" name="retour" value="Retour">
-			</form>
-			<?php
-			if(isset($_POST['retour']))
-			{
-				header("Location: ./page_perso.php"); 
 			}
 			?>
 	</BODY>

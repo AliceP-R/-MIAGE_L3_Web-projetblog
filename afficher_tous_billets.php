@@ -1,6 +1,5 @@
 <?php 
   session_start(); 
-  var_dump($_SESSION); 
   if(!isset($_SESSION['pseudo']))
     header("Location: ./connexion.php"); 
 
@@ -28,7 +27,7 @@
 			/*Connection a la base de données*/
       $cid = mysqli_connect("localhost", $user, $password, "projet_blog") or die("Erreur : ".mysqli_error($cid)); 
 			//Début du SQL
-  		$requete = "SELECT `Titre`, `Resumer`, `Redacteur`, `Etat` FROM `billet;";
+  		$requete = "SELECT `Titre`, `Resumer`, `Redacteur`, `Etat` FROM `billet`;";
   		$res=mysqli_query($cid, $requete);
   		//Fin du SQL
   

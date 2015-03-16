@@ -1,6 +1,5 @@
 <?php 
 	session_start(); 
-	var_dump($_SESSION); 
   if(!isset($_SESSION['pseudo']))
     header("Location: ./connexion.php"); 
 
@@ -68,6 +67,8 @@
 			$_SESSION['contenu']=null; 
 			$_SESSION['actualisation']=0; 
 			$_SESSION['billet_soumis']=0;
+      $_SESSION['publication_ok']=0; 
+      $_SESSION['commentaire_ok']=0; 
 
 
 			// gestion des boutons

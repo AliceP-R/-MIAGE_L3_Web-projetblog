@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.9
+-- version 4.1.4
 -- http://www.phpmyadmin.net
 --
--- Client: 127.0.0.1
--- Généré le : Ven 13 Mars 2015 à 18:29
--- Version du serveur: 5.5.20
--- Version de PHP: 5.3.9
+-- Client :  127.0.0.1
+-- Généré le :  Lun 16 Mars 2015 à 14:37
+-- Version du serveur :  5.6.15-log
+-- Version de PHP :  5.5.8
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `projet_blog`
+-- Base de données :  `projet_blog`
 --
 
 -- --------------------------------------------------------
@@ -27,24 +27,25 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `billet` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Titre` varchar(50) NOT NULL,
   `Resumer` varchar(100) NOT NULL,
   `Contenu` longtext NOT NULL,
   `Redacteur` varchar(50) NOT NULL,
   `Etat` enum('Publie','En attente') NOT NULL DEFAULT 'En attente',
-  PRIMARY KEY (`Titre`,`Redacteur`),
+  PRIMARY KEY (`ID`,`Titre`,`Redacteur`),
   KEY `Titre` (`Titre`),
   KEY `Redacteur` (`Redacteur`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `billet`
 --
 
-INSERT INTO `billet` (`Titre`, `Resumer`, `Contenu`, `Redacteur`, `Etat`) VALUES
-('Alice', 'Resume', 'Contenu', 'aaa', 'En attente'),
-('dfdsf', 'sdfsdfsdfs', 'fsdfsdfsdfs', 'aaa', 'En attente'),
-('titre', 'reumser', 'contenu', 'aaa', 'En attente');
+INSERT INTO `billet` (`ID`, `Titre`, `Resumer`, `Contenu`, `Redacteur`, `Etat`) VALUES
+(2, 'aaa', 'aaa', 'aaa', 'aaa', 'Publie'),
+(3, 'bbb', 'bbb', 'bbb', 'admin', 'Publie'),
+(4, 'ccc', 'ccc', 'ccc', 'admin', 'Publie');
 
 -- --------------------------------------------------------
 
@@ -55,11 +56,19 @@ INSERT INTO `billet` (`Titre`, `Resumer`, `Contenu`, `Redacteur`, `Etat`) VALUES
 CREATE TABLE IF NOT EXISTS `commentaire` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Billet` int(11) NOT NULL,
-  `Emetteur` int(11) NOT NULL,
+  `Emetteur` varchar(50) NOT NULL,
   `Contenu` longtext NOT NULL,
-  `Etat` enum('Publie','En attente') NOT NULL,
+  `Etat` enum('Publie','En attente') NOT NULL DEFAULT 'En attente',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `commentaire`
+--
+
+INSERT INTO `commentaire` (`ID`, `Billet`, `Emetteur`, `Contenu`, `Etat`) VALUES
+(1, 2, 'aaa', 'Premier commentaire', 'Publie'),
+(2, 2, 'admin', 'Premier commentaire', 'Publie');
 
 -- --------------------------------------------------------
 
@@ -80,13 +89,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 
 INSERT INTO `utilisateur` (`Login`, `Mdp`, `Droit`) VALUES
 ('aaa', '7e240de74fb1ed08fa08d38063f6a6a91462a815', 'Lambda'),
-('aaaaaa', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'Lambda'),
-('ccc', 'f36b4825e5db2cf7dd2d2593b3f5c24c0311d8b2', 'Lambda'),
-('eee', '637a81ed8e8217bb01c15c67c39b43b0ab4e20f1', 'Lambda'),
-('jjj', 'c84c766f873ecedf75aa6cf35f1e305e095fec83', 'Lambda'),
-('nnn', '7f88bb68e14d386d89af3cf317f6f7af1d39246c', 'Lambda'),
-('qqq', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'Lambda'),
-('ss', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'Lambda');
+('admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Admin');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

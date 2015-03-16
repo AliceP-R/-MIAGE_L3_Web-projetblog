@@ -8,7 +8,7 @@
 <HTML>
 	<HEAD>
 		<meta charset="utf-8" />
-		<TITLE> Modération du billet <?php echo $_GET['titre']; ?> </TITLE>
+		<TITLE> <?php echo $_GET['titre']." par ".$_GET['redacteur']; ?> </TITLE>
 	</HEAD>
 	<BODY>
 		<?php
@@ -41,7 +41,6 @@
    				echo "<br/><textarea rows='10' cols='50' disabled='disabled'>".$ligne['Resumer']."</textarea>"; 
    				echo "<br/><label>Contenu</label>";
    				echo "<br/><textarea rows='30' cols='50' disabled='disabled'>".$ligne['Contenu']."</textarea><br/>";
-   				echo "<input type=\"submit\" name=\"Envoyer\" value=\"Publié\"/>"; 
    				echo "<input type=\"submit\" name=\"retour\" value=\"Retour\"/>"; 
    				echo "</form>"; 
 			}
@@ -50,23 +49,6 @@
 			if(isset($_POST['retour']))
 			{
 				header("Location: ./page_perso.php"); 
-			}
-			
-			elseif(isset($_POST['Envoyer']))
-			{
-				$requete="UPDATE `billet` SET `Etat` = 'Publie' WHERE `Titre` = '".$_GET['titre']."' AND `Redacteur` ='".$_GET['redacteur']."';"; 
-				$res=mysqli_query($cid, $requete); 
-
-				if($res == FALSE)
-				{ 
-					$_SESSION['publication_ok']=0; 
-					echo "Erreur dans la publication."; 
-				}
-				else
-				{
-					$_SESSION['publication_ok']=1; 
-					header("Location: ./moderer_billet.php"); 
-				}
 			}
 		?>
 	</BODY>
