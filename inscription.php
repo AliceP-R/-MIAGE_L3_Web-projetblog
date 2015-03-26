@@ -1,5 +1,17 @@
 <?php 
 	session_start(); 
+	function motListe()
+	{
+		$liste = array('Skynet is watching you');
+		return $liste[array_rand($liste)];
+	}
+
+	function captcha()
+	{
+		$mot = motListe();
+		$_SESSION['captcha'] = $mot;
+		return $mot;
+	}
 ?>
 <!DOCTYPE html>
 <HTML>
@@ -12,17 +24,18 @@
 	  		<input type="text" name="Login" placeholder="Login"/>
 	  		<input type="password" name="mdp" placeholder="Mot de passe"/>
 	  		<input type="password" name="cmdp" placeholder="Confirmation du mot de passe"/>
+			<label for="captcha">Recopiez le mot : "<?php echo captcha(); ?>"</label>
+            <input type="text" name="captcha" id="captcha" /><br />
 	  		<input type="submit" name="Valider" value="S'inscrire"/>
 	  	</form>
 	  	<?php
 	  		include("config.php");
-
       		/*Si l'utilisateur clique sur Valider*/
       		if(isset($_POST['Valider']))
-      		{
-      			if(($_POST['Login'] == "") || ($_POST['mdp'] == "") || ($_POST['cmdp'] == ""))
+      		{	
+      			if(($_POST['Login'] == "") || ($_POST['mdp'] == "") || ($_POST['cmdp'] == "") || ($_POST['captcha'] == ""))
 	  			{
-	  				die("Vous n'avez pas rempli tout les champs"); 
+	  				die("Vous n'avez pas rempli tous les champs"); 
 	  			}
 	  			else
 	  			{
@@ -30,7 +43,13 @@
 	  				{
 	  					die("Mot de passe différents"); 
 	  				}
-
+					
+				
+					if($_POST['captcha'] != $_SESSION['captcha'])
+					{
+						die ("Vous n'avez pas bien recopié notre code secret ! Etes-vous un méchant T-1000 ?");
+					}
+				
 					/*Connection a la base de donnée*/
 					if(!($cid=mysqli_connect("localhost", $user,$password, "projet_blog")))
 					{
