@@ -47,7 +47,7 @@
     		while ($ligne = mysqli_fetch_assoc($res)) 
     		{
     			echo "<TR ALIGN=CENTER>"; 
-   				echo "<TD VALIGN=MIDDLE>".$ligne["Titre"]."</TD>";
+   				echo "<TD VALIGN=MIDDLE><a href=\"./affichage_1_billet.php?titre=".$ligne['Titre']."&redacteur=".$_SESSION['pseudo']."\">".$ligne['Titre']."</a></TD>";
    				echo "<TD VALIGN=MIDDLE>".$ligne["Resumer"]."</TD>";
           echo "<TD VALIGN=MIDDLE>".$ligne["Etat"]."</TD>";
    				echo "</TR>"; 

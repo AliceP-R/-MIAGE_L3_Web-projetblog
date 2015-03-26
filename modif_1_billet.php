@@ -62,7 +62,7 @@
 			}
 			elseif(isset($_POST['Envoyer']))
 			{
-				$requete="UPDATE `billet` SET `Titre` = '".$_POST['titre']."', `Resumer`='".$_POST['resumer']."', `Contenu` = '".$_POST['contenu']."', `Etat` = 'En attente'
+				$requete="UPDATE `billet` SET `Titre` = '".$_POST['titre']."', `Resumer`='".$_POST['resumer']."', `Contenu` = '".$_POST['contenu']."', `Etat` = 'En attente', `derniere_modif`=NOW()
 							 WHERE `Titre` = '".$_GET['titre']."' AND `Redacteur` ='".$_SESSION['pseudo']."';"; 
 				$res=mysqli_query($cid, $requete); 
 

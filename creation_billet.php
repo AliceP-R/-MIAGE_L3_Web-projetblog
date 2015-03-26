@@ -57,8 +57,8 @@
             else
               $etat="En attente"; 
 
-      			$requete = "INSERT INTO `billet`(`Titre`, `Resumer`, `Contenu`, `Redacteur`, `Etat`) 
-      						VALUES ('".$_POST['titre']."', '".$_POST['resumer']."', '".$_POST['contenu']."', '".$_SESSION['pseudo']."', '".$etat."');";  
+      			$requete = "INSERT INTO `billet`(`Titre`, `Resumer`, `Contenu`, `Redacteur`, `Etat`, `date_creation`, `derniere_modif`) 
+      						VALUES ('".$_POST['titre']."', '".$_POST['resumer']."', '".$_POST['contenu']."', '".$_SESSION['pseudo']."', '".$etat."', NOW(), NOW());";  
   				$res=mysqli_query($cid, $requete);
   				//Fin du SQL  
   				//Si l'insertion a échoué => Message d'erreur

@@ -32,7 +32,7 @@
       	}
       	elseif(isset($_POST['acces_blog']))
       	{
-      		header("Location: ./blog.php"); 
+      		header("Location: ./blog.php?page=1"); 
       	}
       	elseif(isset($_POST['deco']))
       	{

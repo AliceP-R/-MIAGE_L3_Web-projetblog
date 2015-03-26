@@ -15,7 +15,7 @@
     <?php
       if($_SESSION['modif_ok']==1)
       {
-        echo "La modification sur votre article ".$_SESSION['titre']."a bien été prise en compte."; 
+        echo "La modification sur votre article ".$_SESSION['titre']." a bien été prise en compte."; 
         $_SESSION['modif_ok']=0; 
       }
     ?>

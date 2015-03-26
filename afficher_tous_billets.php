@@ -50,7 +50,7 @@
    				echo "<TD VALIGN=MIDDLE "; 
           if($ligne['Redacteur']==$_SESSION['pseudo'])
             echo "BGCOLOR=\"#FF6633\""; 
-          echo ">".$ligne["Titre"]."</TD>";
+          echo "><a href=\"./affichage_1_billet.php?titre=".$ligne['Titre']."&redacteur=".$ligne['Redacteur']."\">".$ligne['Titre']."</a></TD>";
    				echo "<TD VALIGN=MIDDLE "; 
           if($ligne['Redacteur']==$_SESSION['pseudo'])
             echo "BGCOLOR=\"#FF6633\""; 

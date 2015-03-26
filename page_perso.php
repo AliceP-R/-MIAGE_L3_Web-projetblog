@@ -1,6 +1,5 @@
 <?php 
 	session_start(); 
-  var_dump($_SESSION); 
   if(!isset($_SESSION['pseudo']))
     header("Location: ./connexion.php"); 
 
@@ -100,7 +99,7 @@
           }
 			    elseif(isset($_POST['acces_blog']))
       		{
-      			echo "accès blog"; 
+      			header("Location: ./blog.php?page=1");
       		}
       		elseif(isset($_POST['deconnexion']))
       		{

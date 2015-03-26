@@ -20,7 +20,7 @@
 			/*Connection a la base de données*/
       		$cid = mysqli_connect("localhost", $user, $password, "projet_blog") or die("Erreur : ".mysqli_error($cid)); 
 			//Début du SQL
-  			$requete = "SELECT `Resumer`, `Contenu` FROM `billet` WHERE `Titre`=\"".$_GET['titre']."\" AND `Redacteur`=\"".$_GET['redacteur']."\";";
+  			$requete = "SELECT `Resumer`, `Contenu`, `date_creation`, `derniere_modif` FROM `billet` WHERE `Titre`=\"".$_GET['titre']."\" AND `Redacteur`=\"".$_GET['redacteur']."\";";
   			$res=mysqli_query($cid, $requete);
   			//Fin du SQL
 
@@ -36,7 +36,11 @@
 				
 				$ligne = mysqli_fetch_assoc($res); 
 				echo "<form method=\"post\" action=\"\">"; 
-				echo "<legend> Billet ".$_GET['titre']." écrit par ".$_GET['redacteur']." </legend>"; 
+				echo "<legend> Billet ".$_GET['titre']." écrit par ".$_GET['redacteur']." le ".$ligne['date_creation']."</legend>"; 
+				if($ligne['date_creation'] != $ligne['derniere_modif'])
+				{
+					echo "Dernières modification le ".$ligne['derniere_modif'].".<br/>"; 
+				}
    				echo "<label>Résumer</label>";
    				echo "<br/><textarea rows='10' cols='50' disabled='disabled'>".$ligne['Resumer']."</textarea>"; 
    				echo "<br/><label>Contenu</label>";
