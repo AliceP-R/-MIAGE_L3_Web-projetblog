@@ -1,5 +1,6 @@
 <?php 
 	session_start(); 
+  $_SESSION['blog']=0;
   if(!isset($_SESSION['pseudo']))
     header("Location: ./connexion.php"); 
 
@@ -24,6 +25,7 @@
 			<input type="submit" name="bouton_creer" value="Créer un billet" />
 			<input type="submit" name="bouton_modifier" value="Modifier un billet" />
 			<input type="submit" name="bouton_voir" value="Voir mes billets" />
+      <input type="submit" name="bouton_com" value="Voir mes commentaires" />
 			<input type="submit" name="acces_blog" value="Accéder au blog" />
 			<?php
 			include("config.php"); 
@@ -85,6 +87,10 @@
       		{
       			header("Location: ./afficher_billet.php"); 
       		}
+          elseif(isset($_POST['bouton_com']))
+          {
+            header("Location: ./mes_commentaires.php"); 
+          }
       		elseif(isset($_POST['tout_afficher']))
       		{
       			header("Location: ./afficher_tous_billets.php"); 

@@ -1,5 +1,6 @@
 <?php 
 	session_start(); 
+  $_SESSION['blog']=0;
   if(!isset($_SESSION['pseudo']))
     header("Location: ./connexion.php"); 
 

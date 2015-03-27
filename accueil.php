@@ -1,19 +1,20 @@
 <?php 
 	session_start(); 
+	$_SESSION['blog']=0;
 ?>
 <!DOCTYPE html>
 <HTML>
 	<HEAD>
-		<meta charset="utf-8" />
 		<TITLE> Accueil </TITLE>
+		<meta charset="utf-8">
 	</HEAD>
 	<BODY>
 		<form method="POST" action="">
 			<?php 
 				if(!isset($_SESSION['pseudo']))
 				{
-					echo "<input type=\"submit\" name=\"bouton_connexion\" value=\"Se connecter\"/>"; 	
-					echo "<input type=\"submit\" name=\"bouton_inscription\" value=\"S'incrire\" />"; 
+					echo "<input type=\"submit\" name=\"bouton_connexion\" value=\"Se connecter\"/><br/><br/>";
+					echo "<input type=\"submit\" name=\"bouton_inscription\" value=\"S'incrire\" /><br/><br/>"; 
 				}
 				else
 					echo "<input type=\"submit\" name=\"deco\" value=\"Se déconnecter\" />"; 

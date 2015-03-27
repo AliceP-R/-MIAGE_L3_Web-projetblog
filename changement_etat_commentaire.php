@@ -1,5 +1,6 @@
 <?php 
 	session_start(); 
+	$_SESSION['blog']=0;
   if(!isset($_SESSION['pseudo']))
     header("Location: ./connexion.php"); 
 
@@ -37,6 +38,7 @@
    				echo "<br/><label>Contenu</label>";
    				echo "<br/><textarea rows='30' cols='50' disabled='disabled'>".$ligne['Contenu']."</textarea><br/>";
    				echo "<input type=\"submit\" name=\"Envoyer\" value=\"Publié\"/>"; 
+   				echo "<input type=\"submit\" name=\"Supprime\" value=\"Supprimé\"/>"; 
    				echo "<input type=\"submit\" name=\"retour\" value=\"Retour\"/>"; 
    				echo "</form>"; 
 			}
@@ -60,6 +62,22 @@
 				else
 				{
 					$_SESSION['commentaire_ok']=1; 
+					header("Location: ./moderer_commentaire.php"); 
+				}
+			}
+			elseif(isset($_POST['Supprime']))
+			{
+				$requete = "UPDATE `commentaire` SET `Etat` = 'Supprime' WHERE `commentaire`.`ID` = ".$_GET['id'].";"; 
+				$res=mysqli_query($cid, $requete); 
+
+				if($res == FALSE)
+				{ 
+					$_SESSION['commentaire_ok']=0; 
+					echo "Erreur dans la publication."; 
+				}
+				else
+				{
+					$_SESSION['commentaire_supprime']=1; 
 					header("Location: ./moderer_commentaire.php"); 
 				}
 			}

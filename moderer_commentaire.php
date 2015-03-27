@@ -1,5 +1,6 @@
 <?php 
 	session_start(); 
+	$_SESSION['blog']=0;
   if(!isset($_SESSION['pseudo']))
     header("Location: ./connexion.php"); 
 
@@ -22,9 +23,13 @@
 
 			if($_SESSION['commentaire_ok']==1)
 			{
-				echo "Le commentaire concernant le billet ".$_SESSION['titre']." a bien été publié."; 
+				echo "Le commentaire concernant le billet \"".$_SESSION['titre']."\" a bien été publié."; 
 				$_SESSION['titre']=null; 
 				$_SESSION['commentaire_ok']=0; 
+			}
+			if(isset($_SESSION['commentaire_supprime']))
+			{
+				echo "Le commentaire concernant le billet \"".$_SESSION['titre']."\" a bien été supprimé."; 
 			}
 			// Récupération des données relatives au billet 
 			include("config.php"); 

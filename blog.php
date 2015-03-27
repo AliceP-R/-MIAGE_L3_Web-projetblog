@@ -1,20 +1,22 @@
 <?php 
 	session_start(); 
+  $_SESSION['blog']=1; 
 ?>
 <!DOCTYPE html>
 <HTML>
 	<HEAD>
 		<meta charset="utf-8" />
-		<TITLE> Accueil </TITLE>
+		<TITLE> Blog </TITLE>
 	</HEAD>
 	<BODY>
 		<?php
 		include("config.php"); 
+    $_SESSION['page']=$_GET['page']; 
 		
 		// Affichage des billets par 5 
 
 		/*Connection a la base de données*/
-      	$cid = mysqli_connect("localhost", $user, $password, "projet_blog") or die("Erreur : ".mysqli_error($cid)); 
+    $cid = mysqli_connect("localhost", $user, $password, "projet_blog") or die("Erreur : ".mysqli_error($cid)); 
 		
 		//Début du SQL
 		$limite=5*($_GET['page']-1); 

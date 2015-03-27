@@ -8,6 +8,12 @@
 		<TITLE> Connexion </TITLE>
 	</HEAD>
 	<BODY>
+		<?php
+			if($_SESSION['blog']==1)
+			{
+				echo "Vous devez êtes connecté pour commenter."; 
+			}
+		?>
 	<form method="POST" action="">
 		<label for="login">Identifiant</label><br />
 		<input type="text" name="login" id="login"/><br />
@@ -78,7 +84,15 @@
 	  				$_SESSION["juste_inscrit"]=0;
 	  				$_SESSION["billet_soumis"]=0;
 	  				$_SESSION["modif_ok"]=0; 
-	  				header("Location: ./page_perso.php"); 
+	  				if($_SESSION['blog']==0)
+	  				{
+	  					header("Location: ./page_perso.php");
+	  				}
+	  				else if(isset($_SESSION['com_billet']))
+	  				{
+	  					header("location: ./liste_commentaire.php?billet=".$_SESSION['com_billet']);
+	  				}
+	  				 
 				}
 	
 				//...sinon on affiche un message d'erreur.
