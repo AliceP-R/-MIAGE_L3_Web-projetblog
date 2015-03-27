@@ -9,6 +9,7 @@
 <HTML>
 	<HEAD>
 		<meta charset="utf-8" />
+		<link rel="stylesheet" href="style.css" />
 		<TITLE> Modification du billet </TITLE>
 	</HEAD>
 	<BODY>
@@ -18,7 +19,7 @@
 
 			if($_GET['etat']=="Publie")
 			{
-				echo "Attention, si vous modifié cet article, il ne sera plus visible et devra être modérer par un administrateur avant d'être republié.</br>"; 
+				echo "<p>Attention, si vous modifié cet article, il ne sera plus visible et devra être modérer par un administrateur avant d'être republié.</p></br>"; 
 			}
 
 			// Récupération des données relatives au billet 
@@ -39,7 +40,7 @@
   			{
   				$nbre_res=mysqli_num_rows($res); 
   				if($nbre_res==0)
-  					die("Vous n'avez écrit aucun billet.<br/>"); 
+  					die("<p>Vous n'avez écrit aucun billet.</p><br/>"); 
 				
 				$ligne = mysqli_fetch_assoc($res);     			
     			$_SESSION['resumer']=$ligne['Resumer']; 

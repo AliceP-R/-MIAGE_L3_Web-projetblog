@@ -9,6 +9,7 @@
 <HTML>
 	<HEAD>
 		<meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
 		<TITLE> Liste des billets </TITLE>
 	</HEAD>
 
@@ -40,7 +41,7 @@
   		{
   			$nbre_res=mysqli_num_rows($res); 
   			if($nbre_res==0)
-  				die("Vous n'avez écrit aucun billet.<br/>"); 
+  				die("<p>Vous n'avez écrit aucun billet.</p><br/>"); 
     		
     		echo "<TABLE BORDER>"; 
     		echo "<CAPTION>Liste de mes billets</CAPTION>"; 

@@ -5,15 +5,18 @@
 <HTML>
 	<HEAD>
 		<meta charset="utf-8" />
+		<link rel="stylesheet" href="style.css" />
 		<TITLE> Connexion </TITLE>
 	</HEAD>
 	<BODY>
 		<?php
 			if($_SESSION['blog']==1)
 			{
-				echo "Vous devez êtes connecté pour commenter."; 
+				echo "<p>Vous devez êtes connecté pour commenter.</p>"; 
 			}
 		?>
+		<fieldset> 
+   		<legend> Connexion </legend> 
 	<form method="POST" action="">
 		<label for="login">Identifiant</label><br />
 		<input type="text" name="login" id="login"/><br />
@@ -21,11 +24,8 @@
 		<input type="password" name="mdp" id="password"/><br /><br />
 		<input type="submit" name="Valider" value="Connexion" />
 	</form>
-	<label for="bouton_inscript">Vous n'êtes pas inscrit ? Cliquez ici !</label><br/>
-	<form method="POST" action="inscription.php">
-		<input type="submit" name="bouton_inscript" name="S'inscrire" value="Inscription" />
-	</form>
-
+</fieldset>
+	<p>Vous n'êtes pas inscrit ? Cliquez <a href="./inscription.php">ici</a> !!</p>
 
 	<?php
 		include("config.php");
@@ -98,20 +98,20 @@
 				//...sinon on affiche un message d'erreur.
 				else
 				{
-	  				echo "Identifiants incorrects.";
+	  				echo "<p class=\"erreur\">Identifiants incorrects.<p>";
 				}
       		}
       
       		//Si l'utilisateur n'a pas entré de login => Message d'erreur
       		else if(strcmp($_POST['login'], "") == 0)
       		{
-	  			echo "Entrez votre login.";
+	  			echo "<p class=\"erreur\">Entrez votre login.<p>";
 			}
 
 		    //Si l'utilisateur n'a pas entré de mdp => Message d'erreur
       		else if(strcmp($_POST['mdp'], "") ==0)
       		{
-	  			echo "Entrez votre mot de passe.";
+	  			echo "<p class=\"erreur\">Entrez votre mot de passe.<p>";
 			}
     	}
 	?>

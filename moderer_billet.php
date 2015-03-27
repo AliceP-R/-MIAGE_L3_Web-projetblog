@@ -9,6 +9,7 @@
 <HTML>
 	<HEAD>
 		<meta charset="utf-8" />
+		<link rel="stylesheet" href="style.css" />
 		<TITLE> Modération des billets </TITLE>
 	</HEAD>
 	<BODY>
@@ -24,7 +25,7 @@
 
 			if($_SESSION['publication_ok']==1)
 			{
-				echo "Le billet ".$_SESSION['titre']." a bien été publié.<br/>"; 
+				echo "<p>Le billet ".$_SESSION['titre']." a bien été publié.</p><br/>"; 
 				$_SESSION['titre']=null; 
 				$_SESSION['publication_ok']=0; 
 			}
@@ -47,7 +48,7 @@
   			{
   				$nbre_res=mysqli_num_rows($res); 
   				if($nbre_res==0)
-  					die("Tous les billets sont publiés.<br/>"); 
+  					die("<p>Tous les billets sont publiés.</p><br/>"); 
 				
 				echo "<TABLE BORDER>"; 
     			echo "<CAPTION>Liste des billets non publiés</CAPTION>"; 

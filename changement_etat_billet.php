@@ -9,6 +9,7 @@
 <HTML>
 	<HEAD>
 		<meta charset="utf-8" />
+		<link rel="stylesheet" href="style.css" />
 		<TITLE> Modération du billet <?php echo $_GET['titre']; ?> </TITLE>
 	</HEAD>
 	<BODY>
@@ -33,7 +34,7 @@
   			{
   				$nbre_res=mysqli_num_rows($res); 
   				if($nbre_res==0)
-  					die("Vous n'avez écrit aucun billet.<br/>"); 
+  					die("<p>Vous n'avez écrit aucun billet.</p><br/>"); 
 				
 				$ligne = mysqli_fetch_assoc($res); 
 				echo "<form method=\"post\" action=\"\">"; 

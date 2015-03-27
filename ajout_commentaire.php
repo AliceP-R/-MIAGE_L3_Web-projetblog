@@ -11,15 +11,19 @@
 <HTML>
 	<HEAD>
 		<meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
 		<TITLE> Ajout d'un commentaire </TITLE>
 	</HEAD>
 	<BODY>
+    <fieldset>
+      <legend> Création de commentaire </legend>
 		<form method="POST" action="">
 			<label for="titre">Contenu</label><br />
 			<textarea name="contenu" rows="10" cols="50"></textarea><br/>
 			<input type="submit" name="Envoyer" value="J'ai terminé !"> 
 			<input type="submit" name="retour" value="Retour"> 
 		</form>
+    </fieldset>
 
 		<?php
 			include("config.php"); 

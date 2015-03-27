@@ -5,6 +5,7 @@
 <HTML>
 	<HEAD>
 		<meta charset="utf-8" />
+		<link rel="stylesheet" href="style.css" />
 		<TITLE> <?php echo $_GET['titre']." par ".$_GET['redacteur']; ?> </TITLE>
 	</HEAD>
 	<BODY>

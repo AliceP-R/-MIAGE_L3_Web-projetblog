@@ -9,6 +9,7 @@
 <HTML>
 	<HEAD>
 		<meta charset="utf-8" />
+		<link rel="stylesheet" href="style.css" />
 		<TITLE> Modération des commentaires </TITLE>
 	</HEAD>
 	<BODY>
@@ -23,13 +24,13 @@
 
 			if($_SESSION['commentaire_ok']==1)
 			{
-				echo "Le commentaire concernant le billet \"".$_SESSION['titre']."\" a bien été publié."; 
+				echo "<p>Le commentaire concernant le billet \"".$_SESSION['titre']."\" a bien été publié.</p>"; 
 				$_SESSION['titre']=null; 
 				$_SESSION['commentaire_ok']=0; 
 			}
 			if(isset($_SESSION['commentaire_supprime']))
 			{
-				echo "Le commentaire concernant le billet \"".$_SESSION['titre']."\" a bien été supprimé."; 
+				echo "<p>Le commentaire concernant le billet \"".$_SESSION['titre']."\" a bien été supprimé.</p>"; 
 			}
 			// Récupération des données relatives au billet 
 			include("config.php"); 
@@ -50,7 +51,7 @@
   			{
   				$nbre_res=mysqli_num_rows($res); 
   				if($nbre_res==0)
-  					die("Tous les commentaires sont publiés.<br/>"); 
+  					die("<p>Tous les commentaires sont publiés.</p><br/>"); 
 				
 				echo "<TABLE BORDER>"; 
     			echo "<CAPTION>Liste des commentaires non publiés</CAPTION>"; 

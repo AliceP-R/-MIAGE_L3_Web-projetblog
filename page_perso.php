@@ -9,18 +9,19 @@
 <HTML>
 	<HEAD>
 		<meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
 		<TITLE> Page de <?php echo $_SESSION['pseudo'];?> </TITLE>
 	</HEAD>
 	<BODY>
-		Bonjour <?php echo $_SESSION['pseudo']; ?> !
+		<p>Bonjour <?php echo $_SESSION['pseudo']; ?> !</p>
 		<?php 
 			if($_SESSION["juste_inscrit"]==1)
 			{
-				echo "Votre inscription a bien été prise en compte, bienvenue sur notre site !"; 
+				echo "<p>Votre inscription a bien été prise en compte, bienvenue sur notre site !</p>"; 
 				$_SESSION["juste_inscrit"]=0; 
 			}
 		?>
-		Que voulez vous faire aujourd'hui ? 
+		<p>Que voulez vous faire aujourd'hui ? </p>
 		<form method="POST" action="">
 			<input type="submit" name="bouton_creer" value="Créer un billet" />
 			<input type="submit" name="bouton_modifier" value="Modifier un billet" />
@@ -62,7 +63,7 @@
 		<?php 
 			if($_SESSION['billet_soumis']==1 && $_SESSION['Droit']=="Lambda")
 			{
-				echo "Votre billet \"".$_SESSION['titre']."\" a bien été soumis à modération, il sera publié dans les plus brefs délais.<br/>"; 
+				echo "<p>Votre billet \"".$_SESSION['titre']."\" a bien été soumis à modération, il sera publié dans les plus brefs délais.</p><br/>"; 
 			}
 			$_SESSION['titre']=null; 
 			$_SESSION['resumer']=null; 

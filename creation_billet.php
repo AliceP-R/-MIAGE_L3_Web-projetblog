@@ -9,23 +9,27 @@
 <HTML>
 	<HEAD>
 		<meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
 		<TITLE> Création un billet </TITLE>
 	</HEAD>
 	<BODY>
 		<?php 
 		if($_SESSION['actualisation'] == 1)
-			echo "<br/>Vous avez déjà écrit un billet ayant ce titre \"".$_SESSION['titre']."\"<br/>"; 
+			echo "<br/><p>Vous avez déjà écrit un billet ayant ce titre \"".$_SESSION['titre']."\"</p><br/>"; 
 		?>
+    <fieldset> 
+      <legend> Création d'un nouveau billet </legend> 
 		<form method="POST" action="">
-			<label for="titre">Titre de votre billet</label><br />
+			<label>Titre de votre billet</label><br />
 			<input type="text" name="titre"><br/>
-			<label for="titre">Résumer de votre billet</label><br />
+			<label>Résumer de votre billet</label><br />
 			<textarea name="resumer" rows="10" cols="50"><?php if(isset($_SESSION['resumer'])) echo $_SESSION['resumer'];?></textarea><br/>
-			<label for="titre">Contenu de votre billet</label><br />
+			<label>Contenu de votre billet</label><br />
 			<textarea name="contenu" rows="30" cols="50"><?php if(isset($_SESSION['contenu'])) echo $_SESSION['contenu'];?></textarea><br/>
 			<input type="submit" name="Envoyer" value="J'ai terminé !"> 
 			<input type="submit" name="retour" value="Retour"> 
 		</form>
+  </fieldset>
 
 		<?php
 			include("config.php"); 
@@ -43,7 +47,7 @@
 
     			if($_POST['titre'] == "" || $_POST['contenu']== "" || $_POST['resumer'] == "")
     			{
-    				die("Il manque des informations.<br/>"); 
+    				die("<p class=\"erreur\">Il manque des informations.</p><br/>"); 
     			}
 
     			/*Connection a la base de données*/

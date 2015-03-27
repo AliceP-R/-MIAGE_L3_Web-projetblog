@@ -17,9 +17,12 @@
 <HTML>
 	<HEAD>
 		<meta charset="utf-8" />
+		<link rel="stylesheet" href="style.css" />
 		<TITLE> Inscription </TITLE>
 	</HEAD>
 	<BODY>
+		<fieldset>
+			<legend> Inscritpion </legend>
 		<form action="" method="post">
 	  		<input type="text" name="Login" placeholder="Login"/>
 	  		<input type="password" name="mdp" placeholder="Mot de passe"/>
@@ -28,6 +31,7 @@
             <input type="text" name="captcha" id="captcha" /><br />
 	  		<input type="submit" name="Valider" value="S'inscrire"/>
 	  	</form>
+	  </fieldset>
 	  	<?php
 	  		include("config.php");
       		/*Si l'utilisateur clique sur Valider*/
@@ -35,19 +39,19 @@
       		{	
       			if(($_POST['Login'] == "") || ($_POST['mdp'] == "") || ($_POST['cmdp'] == "") || ($_POST['captcha'] == ""))
 	  			{
-	  				die("Vous n'avez pas rempli tous les champs"); 
+	  				die("<p class=\"erreur\">Vous n'avez pas rempli tous les champs.</p>"); 
 	  			}
 	  			else
 	  			{
       				if($_POST['mdp'] != $_POST['cmdp'])
 	  				{
-	  					die("Mot de passe différents"); 
+	  					die("<p class=\"erreur\">Mot de passe différents</p>"); 
 	  				}
 					
 				
 					if($_POST['captcha'] != $_SESSION['captcha'])
 					{
-						die ("Vous n'avez pas bien recopié notre code secret ! Etes-vous un méchant T-1000 ?");
+						die ("<p class=\"erreur\">Vous n'avez pas bien recopié notre code secret ! Etes-vous un méchant T-1000 ?</p>");
 					}
 				
 					/*Connection a la base de donnée*/
@@ -67,8 +71,7 @@
   					//Si l'insertion a échoué => Message d'erreur
   					if($res == FALSE) 
   					{
-  						echo "<br/>Inscriton ratée<br/>"; 
-  						echo "Ce login existe déjà<br/>"; 
+  						echo "<p class=\"erreur\">Ce login existe déjà</p><br/>"; 
   					}
   					//Si l'insertion est réussi => Message de succès
   					else 

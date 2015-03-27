@@ -6,15 +6,16 @@
 	<HEAD>
 		<TITLE> Liste des commentaires </TITLE>
 		<meta charset="utf-8">
+    <link rel="stylesheet" href="style.css" />
 	</HEAD>
 	<BODY>
 		<?php
 
 		if(isset($_SESSION['ajout_com']))
 		{
-			echo "Votre commentaire a bien été pris en compte.<br/>"; 
+			echo "<p>Votre commentaire a bien été pris en compte.</p><br/>"; 
 			if($_SESSION['Droit'] !='Admin')
-				echo "Il est en attente de validation."; 
+				echo "<p>Il est en attente de validation.</p>"; 
 			$_SESSION['ajout_com']=null; 
 		}
 		include("config.php"); 
@@ -37,7 +38,7 @@
   		{
   			$nbre_res=mysqli_num_rows($res); 
   			if($nbre_res==0)
-  				die("Il n'y a aucun commentaire sur cette article.<br/>"); 
+  				die("<p>Il n'y a aucun commentaire sur cette article.</p><br/>"); 
   			
   			// Afficahge des commentaires 
   			echo "<TABLE BORDER>"; 

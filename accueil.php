@@ -5,22 +5,27 @@
 <!DOCTYPE html>
 <HTML>
 	<HEAD>
+		<link rel="stylesheet" href="style.css" />
 		<TITLE> Accueil </TITLE>
 		<meta charset="utf-8">
 	</HEAD>
 	<BODY>
+		<fieldset> 
+   		<legend> Bienvenue sur notre blog ! </legend> 
 		<form method="POST" action="">
 			<?php 
-				if(!isset($_SESSION['pseudo']))
-				{
-					echo "<input type=\"submit\" name=\"bouton_connexion\" value=\"Se connecter\"/><br/><br/>";
-					echo "<input type=\"submit\" name=\"bouton_inscription\" value=\"S'incrire\" /><br/><br/>"; 
-				}
-				else
-					echo "<input type=\"submit\" name=\"deco\" value=\"Se déconnecter\" />"; 
-			?>
+				if(!isset($_SESSION['pseudo'])): ?>
+				
+					<input type="submit" name="bouton_connexion" value="Se connecter"/>
+					<input type="submit" name="bouton_inscription" value="S'incrire" />
+				<?php else : ?>
+				
+					<input type="submit" name="deco" value="Se déconnecter" />
+				<?php endif; ?>
+			
 			<input type="submit" name="acces_blog" value="Accéder au blog" />
 		</form>
+		</fieldset>
 
 		<?php
 		if(isset($_POST['bouton_connexion']))

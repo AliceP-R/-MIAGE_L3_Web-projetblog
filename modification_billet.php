@@ -9,6 +9,7 @@
 <HTML>
 	<HEAD>
 		<meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
 		<TITLE> Modifier un billet </TITLE>
 	</HEAD>
 
@@ -16,7 +17,7 @@
     <?php
       if($_SESSION['modif_ok']==1)
       {
-        echo "La modification sur votre article ".$_SESSION['titre']." a bien été prise en compte."; 
+        echo "<p>La modification sur votre article ".$_SESSION['titre']." a bien été prise en compte.</p>"; 
         $_SESSION['modif_ok']=0; 
       }
     ?>
@@ -47,7 +48,7 @@
   		{
   			$nbre_res=mysqli_num_rows($res); 
   			if($nbre_res==0)
-  				die("Vous n'avez écrit aucun billet.<br/>"); 
+  				die("<p>Vous n'avez écrit aucun billet.</p><br/>"); 
     		
     		echo "<TABLE BORDER>"; 
     		echo "<CAPTION>Liste de mes billets</CAPTION>"; 
@@ -56,7 +57,6 @@
     		{
     			echo "<TR ALIGN=CENTER>"; 
    				echo "<TD VALIGN=MIDDLE><a href=\"./modif_1_billet.php?titre=".$ligne['Titre']."&etat=".$ligne['Etat']."\">".$ligne['Titre']."</a></TD>"; 
-   				//echo "<TD VALIGN=MIDDLE><a href=#>".$ligne['Titre']."</TD>"; 
           		echo "<TD VALIGN=MIDDLE>".$ligne["Etat"]."</TD>";
    				echo "</TR>"; 
 			  }  

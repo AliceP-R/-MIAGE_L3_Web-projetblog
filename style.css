@@ -1,0 +1,101 @@
+ body {
+ font-family:"trebuchet ms",sans-serif;
+ font-size:90%;
+ }
+form 
+ {
+ padding:10px;
+ width:280px;
+ width:auto;
+ margin:auto;
+ display:block;
+ }
+fieldset {
+ margin-bottom:10px;
+ border:1px solid #bbb;
+ width:auto;
+ }
+legend {
+ color:#594F4F;
+ font-weight:bold; 
+ display:block;
+ margin:auto;
+ }
+label {
+ margin-top:10px;
+  margin:auto;
+  display: block;
+  text-align: center;
+ }
+label.inline {
+ display:inline;
+ margin-right:50px;
+ margin:auto;
+ }
+input, textarea, select, option {
+ background-color:#FFF3F3;
+ margin:auto;
+ display:block;
+ }
+input, textarea, select {
+ padding:3px;
+ border:1px solid #bbb;
+ border-radius:5px;
+ width:auto;
+ box-shadow:1px 1px 2px #FFFFFF inset;
+ }
+
+input[type=submit], input[type=reset] {
+ margin-left:5px;
+ box-shadow:1px 1px 1px #DA7E3D;
+ cursor:pointer;
+   margin:auto;
+  display: block;
+ }
+
+p
+{
+	 margin-top:10px;
+  margin:auto;
+  display: block;
+  text-align: center;
+}
+
+.erreur
+{
+	margin-top:10px;
+  margin:auto;
+  display: block;
+  text-align: center;
+  color: #FF9900;
+}
+
+table 
+{
+	border-collapse:collapse;
+	border-spacing:0;
+	border-color:#bbb; 
+	margin:auto;
+}
+td
+{
+	font-family:Arial, sans-serif;
+	font-size:14px;padding:10px 5px;
+	border-style:solid;border-width:1px;
+	overflow:hidden;
+	word-break:normal;
+	border-color:#bbb;
+	color:#594F4F;
+	background-color:#E0FFEB;
+}
+th
+{
+	font-family:Arial, sans-serif;
+	font-size:14px;font-weight:normal;
+	padding:10px 5px;border-style:solid;
+	border-width:1px;overflow:hidden;
+	word-break:normal;
+	border-color:#bbb;
+	color:#493F3F;
+	background-color:#9DE0AD;
+}
