@@ -38,7 +38,7 @@
   		{
   			$nbre_res=mysqli_num_rows($res); 
   			if($nbre_res==0)
-  				die("<p>Il n'y a aucun commentaire sur cette article.</p><br/>"); 
+  				echo "<p>Il n'y a aucun commentaire sur cette article.</p><br/>"; 
   			
   			// Afficahge des commentaires 
   			echo "<TABLE BORDER>"; 
